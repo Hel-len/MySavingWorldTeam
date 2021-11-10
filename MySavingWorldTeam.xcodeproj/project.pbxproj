@@ -13,6 +13,12 @@
 		BFBE12D0273BABF600E603E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFBE12CF273BABF600E603E0 /* Assets.xcassets */; };
 		BFBE12D3273BABF600E603E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFBE12D1273BABF600E603E0 /* LaunchScreen.storyboard */; };
 		BFBE12DC273BAC5700E603E0 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12DB273BAC5700E603E0 /* TeamListViewController.swift */; };
+		BFBE12DF273BAD4000E603E0 /* mr_OzHandicraft_BTG.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFBE12DE273BAD4000E603E0 /* mr_OzHandicraft_BTG.otf */; };
+		BFBE12E2273BAD6500E603E0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12E1273BAD6500E603E0 /* Team.swift */; };
+		BFBE12E5273BADB900E603E0 /* CustomBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12E4273BADB900E603E0 /* CustomBarButton.swift */; };
+		BFBE12E7273BADDA00E603E0 /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12E6273BADDA00E603E0 /* helper.swift */; };
+		BFBE12EA273BAE1500E603E0 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12E9273BAE1500E603E0 /* TeamViewController.swift */; };
+		BFBE12EC273BAE8800E603E0 /* ObserverForKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12EB273BAE8800E603E0 /* ObserverForKeyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		BFBE12D2273BABF600E603E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFBE12D4273BABF600E603E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFBE12DB273BAC5700E603E0 /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
+		BFBE12DE273BAD4000E603E0 /* mr_OzHandicraft_BTG.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mr_OzHandicraft_BTG.otf; sourceTree = "<group>"; };
+		BFBE12E1273BAD6500E603E0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		BFBE12E4273BADB900E603E0 /* CustomBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarButton.swift; sourceTree = "<group>"; };
+		BFBE12E6273BADDA00E603E0 /* helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helper.swift; sourceTree = "<group>"; };
+		BFBE12E9273BAE1500E603E0 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
+		BFBE12EB273BAE8800E603E0 /* ObserverForKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverForKeyboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,10 @@
 		BFBE12C2273BABF400E603E0 /* MySavingWorldTeam */ = {
 			isa = PBXGroup;
 			children = (
+				BFBE12E8273BADFF00E603E0 /* TeamView */,
+				BFBE12E3273BAD9C00E603E0 /* Extensions */,
+				BFBE12E0273BAD4D00E603E0 /* Model */,
+				BFBE12DD273BAD2F00E603E0 /* Fonts */,
 				BFBE12DA273BAC4500E603E0 /* TeamList */,
 				BFBE12C3273BABF400E603E0 /* AppDelegate.swift */,
 				BFBE12C5273BABF400E603E0 /* SceneDelegate.swift */,
@@ -73,6 +89,40 @@
 				BFBE12DB273BAC5700E603E0 /* TeamListViewController.swift */,
 			);
 			path = TeamList;
+			sourceTree = "<group>";
+		};
+		BFBE12DD273BAD2F00E603E0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BFBE12DE273BAD4000E603E0 /* mr_OzHandicraft_BTG.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BFBE12E0273BAD4D00E603E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BFBE12E1273BAD6500E603E0 /* Team.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BFBE12E3273BAD9C00E603E0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BFBE12E4273BADB900E603E0 /* CustomBarButton.swift */,
+				BFBE12E6273BADDA00E603E0 /* helper.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BFBE12E8273BADFF00E603E0 /* TeamView */ = {
+			isa = PBXGroup;
+			children = (
+				BFBE12E9273BAE1500E603E0 /* TeamViewController.swift */,
+				BFBE12EB273BAE8800E603E0 /* ObserverForKeyboard.swift */,
+			);
+			path = TeamView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFBE12DF273BAD4000E603E0 /* mr_OzHandicraft_BTG.otf in Resources */,
 				BFBE12D3273BABF600E603E0 /* LaunchScreen.storyboard in Resources */,
 				BFBE12D0273BABF600E603E0 /* Assets.xcassets in Resources */,
 			);
@@ -145,9 +196,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFBE12C4273BABF400E603E0 /* AppDelegate.swift in Sources */,
+				BFBE12EA273BAE1500E603E0 /* TeamViewController.swift in Sources */,
 				BFBE12DC273BAC5700E603E0 /* TeamListViewController.swift in Sources */,
+				BFBE12E7273BADDA00E603E0 /* helper.swift in Sources */,
 				BFBE12C6273BABF400E603E0 /* SceneDelegate.swift in Sources */,
+				BFBE12E2273BAD6500E603E0 /* Team.swift in Sources */,
+				BFBE12E5273BADB900E603E0 /* CustomBarButton.swift in Sources */,
 				BFBE12CE273BABF400E603E0 /* MySavingWorldTeam.xcdatamodeld in Sources */,
+				BFBE12EC273BAE8800E603E0 /* ObserverForKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
