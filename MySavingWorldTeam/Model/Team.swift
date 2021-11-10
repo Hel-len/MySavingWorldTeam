@@ -9,29 +9,29 @@ import UIKit
 struct Team {
     let name: String
     let emblem: String
-    let heroes: [Hero]
+    let players: [Player]
 
     static func getTeams() -> [Team] {
         [
             Team(
                 name: "Team Spirit",
                 emblem: "emblem0",
-                heroes: [
-                    Hero(
+                players: [
+                    Player(
                         avatar: "avatar11",
                         name: "Windranger",
                         isCaptain: true,
                         tount: "Время пострелять.",
                         equipment: [.assaultCuirass]
                     ),
-                    Hero(
+                    Player(
                         avatar: "avatar12",
                         name: "Mirana",
                         isCaptain: false,
                         tount: "Луна освещает мне дорогу!",
                         equipment: [.assaultCuirass]
                     ),
-                    Hero(
+                    Player(
                         avatar: "avatar13",
                         name: "Crystar Maiden",
                         isCaptain: false,
@@ -41,22 +41,22 @@ struct Team {
             Team(
                 name: "Team Secret",
                 emblem: "emblem3",
-                heroes: [
-                    Hero(
+                players: [
+                    Player(
                         avatar: "avatar13",
                         name: "Crystal Maiden",
                         isCaptain: false,
                         tount: "Превращу в сосульку!",
                         equipment: [.assaultCuirass]
                     ),
-                    Hero(
+                    Player(
                         avatar: "avatar12",
                         name: "Mirana",
                         isCaptain: true,
                         tount: "Крадусь...",
                         equipment: [.nullifier, .powerTreads]
                     ),
-                    Hero(
+                    Player(
                         avatar: "avatar13",
                         name: "Crystal Maiden",
                         isCaptain: false,
@@ -67,7 +67,7 @@ struct Team {
     }
 }
 
-struct Hero {
+struct Player {
     let avatar: String
     let name: String
     let isCaptain: Bool

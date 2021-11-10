@@ -60,5 +60,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSFileProviderDomainUsageDescription</key>
+	<string>Please allow access to your library to download player avatars.</string>
 </dict>
 </plist>

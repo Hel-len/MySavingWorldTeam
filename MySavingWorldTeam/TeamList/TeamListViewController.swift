@@ -94,7 +94,7 @@ class TeamListViewController: UIViewController {
     }
     
     private func findTeamLeader(team: Team) {
-        for hero in team.heroes {
+        for hero in team.players {
             if hero.isCaptain == true {
                 teamLeader = hero.name
             }

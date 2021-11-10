@@ -19,6 +19,7 @@
 		BFBE12E7273BADDA00E603E0 /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12E6273BADDA00E603E0 /* helper.swift */; };
 		BFBE12EA273BAE1500E603E0 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12E9273BAE1500E603E0 /* TeamViewController.swift */; };
 		BFBE12EC273BAE8800E603E0 /* ObserverForKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12EB273BAE8800E603E0 /* ObserverForKeyboard.swift */; };
+		BFBE12F1273C3D2500E603E0 /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12F0273C3D2500E603E0 /* PlayerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		BFBE12E6273BADDA00E603E0 /* helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helper.swift; sourceTree = "<group>"; };
 		BFBE12E9273BAE1500E603E0 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		BFBE12EB273BAE8800E603E0 /* ObserverForKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverForKeyboard.swift; sourceTree = "<group>"; };
+		BFBE12F0273C3D2500E603E0 /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				BFBE12E9273BAE1500E603E0 /* TeamViewController.swift */,
 				BFBE12EB273BAE8800E603E0 /* ObserverForKeyboard.swift */,
+				BFBE12F0273C3D2500E603E0 /* PlayerTableViewCell.swift */,
 			);
 			path = TeamView;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			files = (
 				BFBE12C4273BABF400E603E0 /* AppDelegate.swift in Sources */,
 				BFBE12EA273BAE1500E603E0 /* TeamViewController.swift in Sources */,
+				BFBE12F1273C3D2500E603E0 /* PlayerTableViewCell.swift in Sources */,
 				BFBE12DC273BAC5700E603E0 /* TeamListViewController.swift in Sources */,
 				BFBE12E7273BADDA00E603E0 /* helper.swift in Sources */,
 				BFBE12C6273BABF400E603E0 /* SceneDelegate.swift in Sources */,

@@ -10,11 +10,13 @@ import UIKit
 class TeamViewController: UIViewController {
     
     var team: Team?
-    
-    var playerAmount = 3
-    var stackHeight: CGFloat = 0
-    let playerBlockHeight: CGFloat = 120.0
-    let playerStackSpacing: CGFloat = 15
+    private var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = UIColor(white: 1, alpha: 0)
+        tableView.rowHeight = 120
+        tableView.register(PlayerTableViewCell.self, forCellReuseIdentifier: PlayerTableViewCell.identifier)
+        return tableView
+    }()
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -39,14 +41,6 @@ class TeamViewController: UIViewController {
         return image
     }()
     
-    private let playerBack: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "backbg")
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
-        return image
-    }()
-    
     private let teamNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,46 +50,17 @@ class TeamViewController: UIViewController {
         return label
     }()
     
-    private let playerNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Имя героя"
-        label.textColor = .black
-        label.font = UIFont(name: "mr_OzHandicraft_BTG", size: 20)
-        return label
-    }()
-    
-    private let playerTountLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Насмешка"
-        label.textColor = .black
-        label.font = UIFont(name: "mr_OzHandicraft_BTG", size: 20)
-        return label
-    }()
-    
-    private let playerEquipLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Предметы"
-        label.textColor = .black
-        label.font = UIFont(name: "mr_OzHandicraft_BTG", size: 20)
-        return label
-    }()
-    
-    private let equipPlaceBack: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "equipPlaceHolder")
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
-        return image
+    private let addEmblemButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(addEmblemButtonTapped), for: .touchUpInside)
+        return button
     }()
     
     private var teamNameStackView = UIStackView()
     private let teamEmblem = UIImageView()
     private let teamNameTextField = UITextField()
-    private let playerAvatar = UIImageView()
-    private let playerName = UITextField()
-    private let playerTount = UITextField()
-    private var playerEquipStack = UIStackView()
+    private var playerAmount = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,17 +76,16 @@ class TeamViewController: UIViewController {
         scrollView.setConstraints(to: view, constant: 0)
         scrollView.addSubview(imageBackground)
         imageBackground.setConstraints(to: view, constant: 0)
-        imageBackground.addSubview(teamEmblem)
+        addEmblemButton.setImage(teamEmblem.image, for: .normal)
+        view.addSubview(addEmblemButton)
         imageBackground.addSubview(teamNameBack)
-        setupAllPlayers()
         setupTeamNameStackView()
         self.view.addSubview(teamNameStackView)
+        view.addSubview(tableView)
     }
     
     private func setupTeam() {
-        teamEmblem.translatesAutoresizingMaskIntoConstraints = false
         teamNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        teamEmblem.clipsToBounds = true
         teamNameTextField.borderStyle = .roundedRect
         teamNameTextField.placeholder = "Введите текст"
         teamNameTextField.font = UIFont(name: "mr_OzHandicraft_BTG", size: 20)
@@ -134,6 +98,14 @@ class TeamViewController: UIViewController {
         }
     }
     
+    @objc private func addEmblemButtonTapped() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
     private func setupTeamNameStackView() {
         teamNameStackView = UIStackView(arrangedSubviews: [teamNameLabel, teamNameTextField])
         teamNameStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -143,92 +115,58 @@ class TeamViewController: UIViewController {
         teamNameStackView.spacing = 5
     }
     
-    private func setupEquipStack() {
-        playerEquipStack = UIStackView(arrangedSubviews: [equipPlaceBack, equipPlaceBack, equipPlaceBack, equipPlaceBack])
-        playerEquipStack.axis = .horizontal
-        playerEquipStack.distribution = .fillProportionally
-        playerEquipStack.spacing = 10
-    }
-    
-    private func setupTextFields(for textFields: [UITextField], index: Int) {
-        for textField in textFields {
-            textField.borderStyle = .roundedRect
-            textField.placeholder = "Введите текст"
-            textField.font = UIFont(name: "mr_OzHandicraft_BTG", size: 20)
-            
-            if team == nil {
-                textField.text = ""
-            } else {
-                playerName.text = team!.heroes[index].name
-                playerTount.text = team!.heroes[index].tount
-            }
-        }
-    }
-    
-    private func setupPlayerAvatar(_ index: Int) {
-        playerAvatar.clipsToBounds = true
-        if team == nil {
-            playerAvatar.image = UIImage(named: "avatar12")
-        } else {
-            playerAvatar.image = UIImage(named: team!.heroes[index].avatar)
-        }
-    }
-    
-    private func setupPlayerBlock(_ index: Int) {
-        setupPlayerAvatar(index)
-        setupTextFields(for: [playerName, playerTount], index: index)
-        view.addSubview(playerBack)
-        view.addSubview(playerAvatar)
-        view.addSubview(playerNameLabel)
-        view.addSubview(playerName)
-        view.addSubview(playerTountLabel)
-        view.addSubview(playerTount)
-        view.addSubview(playerEquipLabel)
-        view.addSubview(playerEquipStack)
-        setAllPlayerConstraints(index)
-    }
-    
-    private func setupAllPlayers() {
-        var index = 0
-        if team == nil {
-            for _ in 1...playerAmount {
-                setupPlayerBlock(index)
-                index += 1
-            }
-        } else {
-
-            for _ in team!.heroes {
-                setupPlayerBlock(index)
-                index += 1
-            }
-        }
-    }
-    
     private func setDelegate() {
         teamNameTextField.delegate = self
-        playerName.delegate = self
-        playerTount.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 }
 
 extension TeamViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         teamNameTextField.resignFirstResponder()
-        playerName.resignFirstResponder()
-        playerTount.resignFirstResponder()
         return true
+    }
+}
+
+extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let count = team?.players.count else { return playerAmount }
+        return count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PlayerTableViewCell.identifier, for: indexPath) as! PlayerTableViewCell
+        
+        cell.configure(player: team?.players[indexPath.row])
+        return cell
+    }
+}
+
+extension TeamViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
+            teamEmblem.image = image
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }
 
 extension TeamViewController {
     private func setConstraints() {
-        teamEmblem.topAnchor.constraint(equalTo: imageBackground.topAnchor, constant: 100).isActive = true
-        teamEmblem.leadingAnchor.constraint(equalTo: imageBackground.leadingAnchor, constant: 30).isActive = true
-        teamEmblem.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        teamEmblem.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        
+        addEmblemButton.topAnchor.constraint(equalTo: imageBackground.topAnchor, constant: 100).isActive = true
+        addEmblemButton.leadingAnchor.constraint(equalTo: imageBackground.leadingAnchor, constant: 30).isActive = true
+        addEmblemButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        addEmblemButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
     
         teamNameBack.topAnchor.constraint(equalTo: imageBackground.topAnchor, constant: 100).isActive = true
-        teamNameBack.leadingAnchor.constraint(equalTo: teamEmblem.trailingAnchor, constant: 15).isActive = true
+        teamNameBack.leadingAnchor.constraint(equalTo: addEmblemButton.trailingAnchor, constant: 15).isActive = true
         teamNameBack.heightAnchor.constraint(equalToConstant: 80).isActive = true
         teamNameBack.trailingAnchor.constraint(equalTo: imageBackground.trailingAnchor, constant: -30).isActive = true
         
@@ -236,38 +174,12 @@ extension TeamViewController {
         teamNameStackView.centerYAnchor.constraint(equalTo: teamNameBack.centerYAnchor).isActive = true
         teamNameStackView.leadingAnchor.constraint(equalTo: teamNameBack.leadingAnchor, constant: 20).isActive = true
         teamNameStackView.trailingAnchor.constraint(equalTo: teamNameBack.trailingAnchor, constant: -20).isActive = true
-    }
-    
-    private func setPlayerBackConstraints(_ topConstant: Int) {
-        playerBack.translatesAutoresizingMaskIntoConstraints = false
-        playerBack.topAnchor.constraint(equalTo: teamEmblem.bottomAnchor, constant: 15 + CGFloat(topConstant) * ( playerBlockHeight + 15 )).isActive = true
-        playerBack.leadingAnchor.constraint(equalTo: imageBackground.leadingAnchor, constant: 30).isActive = true
-        playerBack.trailingAnchor.constraint(equalTo: imageBackground.trailingAnchor, constant: -30).isActive = true
-        playerBack.heightAnchor.constraint(equalToConstant: playerBlockHeight).isActive = true
-    }
-    
-    private func setPlayerBlockConstraints(for view: UIView, topAnchor: NSLayoutAnchor<NSLayoutYAxisAnchor>, leadAnchor: NSLayoutAnchor<NSLayoutXAxisAnchor>, height: CGFloat, width: CGFloat?, constant: CGFloat, topConstant: Int) {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.topAnchor.constraint(equalTo: topAnchor, constant: constant + CGFloat(topConstant) * ( playerBlockHeight + 15 )).isActive = true
-        view.leadingAnchor.constraint(equalTo: leadAnchor, constant: constant).isActive = true
-        view.heightAnchor.constraint(equalToConstant: height).isActive = true
         
-        if width == nil {
-            view.trailingAnchor.constraint(equalTo: imageBackground.trailingAnchor, constant: -(30 + constant)).isActive = true
-        } else {
-            view.widthAnchor.constraint(equalToConstant: width!).isActive = true
-        }
-    }
-    
-    private func setAllPlayerConstraints(_ index: Int) {
-        setPlayerBackConstraints(index)
-        setPlayerBlockConstraints(for: playerAvatar, topAnchor: playerBack.topAnchor, leadAnchor: playerBack.leadingAnchor, height: 100, width: 67, constant: 10, topConstant: index)
-        setPlayerBlockConstraints(for: playerNameLabel, topAnchor: playerBack.topAnchor, leadAnchor: playerAvatar.trailingAnchor, height: 20, width: 55, constant: 15, topConstant: index)
-        setPlayerBlockConstraints(for: playerTountLabel, topAnchor: playerNameLabel.bottomAnchor, leadAnchor: playerAvatar.trailingAnchor, height: 20, width: 55, constant: 15, topConstant: index)
-        setPlayerBlockConstraints(for: playerEquipLabel, topAnchor: playerTountLabel.bottomAnchor, leadAnchor: playerAvatar.trailingAnchor, height: 20, width: 55, constant: 15, topConstant: index)
-        setPlayerBlockConstraints(for: playerName, topAnchor: playerBack.topAnchor, leadAnchor: playerNameLabel.trailingAnchor, height: 20, width: nil, constant: 15, topConstant: index)
-        setPlayerBlockConstraints(for: playerTount, topAnchor: playerName.bottomAnchor, leadAnchor: playerTountLabel.trailingAnchor, height: 20, width: nil, constant: 15, topConstant: index)
-        setPlayerBlockConstraints(for: playerEquipStack, topAnchor: playerTount.bottomAnchor, leadAnchor: playerEquipLabel.trailingAnchor, height: 20, width: nil, constant: 15, topConstant: index)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: addEmblemButton.bottomAnchor, constant: 15).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: imageBackground.leadingAnchor, constant: 30).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: imageBackground.trailingAnchor, constant: -30).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: imageBackground.bottomAnchor, constant: 0).isActive = true
     }
 }
 
