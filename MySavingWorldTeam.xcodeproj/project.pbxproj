@@ -9,23 +9,21 @@
 /* Begin PBXBuildFile section */
 		BFBE12C4273BABF400E603E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12C3273BABF400E603E0 /* AppDelegate.swift */; };
 		BFBE12C6273BABF400E603E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12C5273BABF400E603E0 /* SceneDelegate.swift */; };
-		BFBE12C8273BABF400E603E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12C7273BABF400E603E0 /* ViewController.swift */; };
-		BFBE12CB273BABF400E603E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFBE12C9273BABF400E603E0 /* Main.storyboard */; };
 		BFBE12CE273BABF400E603E0 /* MySavingWorldTeam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12CC273BABF400E603E0 /* MySavingWorldTeam.xcdatamodeld */; };
 		BFBE12D0273BABF600E603E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFBE12CF273BABF600E603E0 /* Assets.xcassets */; };
 		BFBE12D3273BABF600E603E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFBE12D1273BABF600E603E0 /* LaunchScreen.storyboard */; };
+		BFBE12DC273BAC5700E603E0 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE12DB273BAC5700E603E0 /* TeamListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BFBE12C0273BABF400E603E0 /* MySavingWorldTeam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySavingWorldTeam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFBE12C3273BABF400E603E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFBE12C5273BABF400E603E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BFBE12C7273BABF400E603E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BFBE12CA273BABF400E603E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFBE12CD273BABF400E603E0 /* MySavingWorldTeam.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MySavingWorldTeam.xcdatamodel; sourceTree = "<group>"; };
 		BFBE12CF273BABF600E603E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFBE12D2273BABF600E603E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFBE12D4273BABF600E603E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFBE12DB273BAC5700E603E0 /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +56,23 @@
 		BFBE12C2273BABF400E603E0 /* MySavingWorldTeam */ = {
 			isa = PBXGroup;
 			children = (
+				BFBE12DA273BAC4500E603E0 /* TeamList */,
 				BFBE12C3273BABF400E603E0 /* AppDelegate.swift */,
 				BFBE12C5273BABF400E603E0 /* SceneDelegate.swift */,
-				BFBE12C7273BABF400E603E0 /* ViewController.swift */,
-				BFBE12C9273BABF400E603E0 /* Main.storyboard */,
 				BFBE12CF273BABF600E603E0 /* Assets.xcassets */,
 				BFBE12D1273BABF600E603E0 /* LaunchScreen.storyboard */,
 				BFBE12D4273BABF600E603E0 /* Info.plist */,
 				BFBE12CC273BABF400E603E0 /* MySavingWorldTeam.xcdatamodeld */,
 			);
 			path = MySavingWorldTeam;
+			sourceTree = "<group>";
+		};
+		BFBE12DA273BAC4500E603E0 /* TeamList */ = {
+			isa = PBXGroup;
+			children = (
+				BFBE12DB273BAC5700E603E0 /* TeamListViewController.swift */,
+			);
+			path = TeamList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,7 +134,6 @@
 			files = (
 				BFBE12D3273BABF600E603E0 /* LaunchScreen.storyboard in Resources */,
 				BFBE12D0273BABF600E603E0 /* Assets.xcassets in Resources */,
-				BFBE12CB273BABF400E603E0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,8 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFBE12C8273BABF400E603E0 /* ViewController.swift in Sources */,
 				BFBE12C4273BABF400E603E0 /* AppDelegate.swift in Sources */,
+				BFBE12DC273BAC5700E603E0 /* TeamListViewController.swift in Sources */,
 				BFBE12C6273BABF400E603E0 /* SceneDelegate.swift in Sources */,
 				BFBE12CE273BABF400E603E0 /* MySavingWorldTeam.xcdatamodeld in Sources */,
 			);
@@ -150,14 +154,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BFBE12C9273BABF400E603E0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFBE12CA273BABF400E603E0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BFBE12D1273BABF600E603E0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -299,7 +295,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.DrankinaElena.MySavingWorldTeam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,7 +313,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.DrankinaElena.MySavingWorldTeam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
